@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="front/style.css" rel="stylesheet" type="text/css">
+    <link href="front/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" />
+    <script src="front/jquery-3.2.1.min.js"></script>
+    <script src="front/popper.min.js"></script>
+    <script src="front/bootstrap/js/bootstrap.js"></script>
+    <title>Esame Back-end</title>
+</head>
+
+<body>
+    <div id="app" v-cloack>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Welcome </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">{{currentUser.name}}
+                                <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <button type="button" class="btn btn-primary offset-1">
+                            Notifications
+                            <span class="badge badge-light">4</span>
+                        </button>
+                        <div id="txt" class="Ptime"></div>
+                    </ul>
+                    <input class="form-control mr-sm-5 col-6" type="search" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-primary mr-4" @click="logout">
+                        <!--@click="logout">-->
+                        Logout
+                    </button>
+
+                    <span class="navbar-text">
+                        "modifica"
+                    </span>
+                </div>
+            </nav>
+            <div class="container-fluid mt-3" v-if="seen">
+
+                <form>
+                    <div class="form-row col-8">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer01">First name</label>
+                            <input type="text" class="form-control is-valid" id="validationServer01" placeholder="*First name" v-model="user.name" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationServer02">Last name</label>
+                            <input type="text" class="form-control is-valid" id="validationServer02" placeholder="*Last name" v-model="user.surname"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row col-8">
+                        <div class="form-group col-md-4 is-invalid">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control is-invalid" id="inputEmail4" placeholder="*Email" v-model="user.email" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control is-invalid" id="inputPassword4" placeholder="*Password" v-model="user.password"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group offset-1">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" required>
+                            <label class="form-check-label" for="invalidCheck3">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ml-3">
+                        <div class="custbutt1 col-1">
+                            <button class="btn btn-primary" type="submit" @click="signup">Submit form</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br>
+            <br>
+            <div class="row ml-5" v-if="seen">
+                <span>
+                    <h2>Log is Now!</h2>
+                </span>
+            </div>
+            <div class="container-fluid mt-3" v-if="seen">
+                <div class="form-row col-8">
+                    <div class="form-group col-md-4 is-invalid">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control is-invalid" id="inputEmail4" placeholder="*Email" v-model="email" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" class="form-control is-invalid" id="inputPassword4" placeholder="*Password" v-model="password" required>
+                    </div>
+                </div>
+                <div class="row ml-3 mt-2">
+                    <div class="custbutt1 col-1">
+                        <button class="btn btn-primary" type="submit" @click="login">Submit form</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
